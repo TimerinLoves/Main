@@ -1,0 +1,127 @@
+body {
+    font-family: Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+section {
+    padding: 40px 0;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+.portfolio-items {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.portfolio-item {
+    flex-basis: 60%;
+    margin-right: 5%;
+    margin-bottom: 20px;
+	position: relative;
+	height: 100%;
+	opacity: 1;
+	transition: opacity 0.3s ease;
+}
+
+.portfolio-item.hidden {
+	opacity: 0;
+}
+
+.prev-btn,
+.next-btn {
+	display: block;
+	margin-top: 10px;
+	padding: 10px 15px;
+	background-color: #333;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	text-align: center;
+	height: 50px;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+    background-color: #555; /* Change background color on hover */
+}
+
+.portfolio-item img {
+    max-width: 100%;
+    height: auto;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.portfolio-item .example-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.portfolio-item .example-images img {
+    width: 30%;
+    height: auto;
+    margin-bottom: 10px;
+}

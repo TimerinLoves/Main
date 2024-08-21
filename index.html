@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Tim Rechenberger</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about" data-lang="miniabout">About</a></li>
+                    <li><a href="#portfolio" data-lang="miniportfolio">Portfolio</a></li>
+                    <li><a href="#contact"data-lang="minicontact">Contact</a></li>
+					<li>
+						<button onclick="setLanguage('en')" data-lang="English">English</button>
+						<button onclick="setLanguage('de')" data-lang="German">German</button>
+						<button onclick="setLanguage('jp')" data-lang="Japanese">Japanese</button>
+						<button onclick="setLanguage('sp')" data-lang="Spanish">Spanish</button>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section id="about">
+		<div class="container">
+			<h2 data-lang="about"></h2>
+			<p data-lang="aboutText"></p>
+		</div>
+	</section>
+
+	<section id="portfolio">
+		<div class="container">
+			<h2 data-lang="portfolio">Portfolio</h2>
+			<div class="portfolio-items">
+				<div class="portfolio-item">
+					<h4 data-lang="project1Title"></h4>
+					<p data-lang="project1Description"></p>
+					<a href="https://github.com/TimerinLoves/ValorantWeaponBuyGenerator" target="_blank" data-lang="VOG"></a>
+						<div class="example-images">
+							<img src="pics/weapongen-1.png" alt="Random Valorant Weapon Generator">
+							<img src="pics/weapongen-2.png" alt="Random Valorant Weapon Generator Suggestion">
+							<img src="pics/weapongen-3.png" alt="View Example Weapon Pictures">
+						</div>
+				</div>
+				<div class="portfolio-item">
+					<h4 data-lang="project2Title"></h4>
+					<p data-lang="project2Description"></p>
+					<a href="https://github.com/TimerinLoves/sw-imgpx" target="_blank" data-lang="VOG"></a>
+					    <div class="example-images">
+							<img src="pics/sw-imgpx-1.png" alt="Inserted Image for Generating">
+							<img src="pics/sw-imgpx-2.png" alt="Output Image after Generating">
+							<img src="pics/sw-imgpx-3.png" alt="In-Game Example">
+						</div>
+				</div>
+				<div class="portfolio-item">
+					<h4 data-lang="project3Title"></h4>
+					<p data-lang="project3Description"></p>
+					<a href="https://github.com/TimerinLoves/valorant-text-generator" target="_blank" data-lang="VOG"></a>
+						<div class="example-images">
+							<img src="pics/val-tg-1.png" alt="Empty Text Generator Window">
+							<img src="pics/val-tg-2.png" alt="Ready to Copy Generator Window">
+							<img src="pics/val-tg-3.png" alt="In-Game Example">
+						</div>
+				</div>
+			
+				<button class="prev-btn"  onclick="prevItem(this)">🡸</button>
+				<button class="next-btn"  onclick="nextItem(this)">🡺</button>
+		</div>
+	</section>
+
+    
+    <section id="contact">
+        <div class="container">
+            <h2 data-lang="contact">Contact Me</h2>
+            <form action="contact.php" method="post">
+                <label for="name" data-lang="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email" data-lang="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message" data-lang="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit" data-lang="send">Send</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p data-lang="CC"></p>
+        </div>
+    </footer>
+	<script>
+	    var currentItemIndex = 0;
+		var portfolioItems = document.querySelectorAll('.portfolio-item');
+
+		function showItem(index) {
+			portfolioItems.forEach(function(item, i) {
+				item.style.display = i === index ? 'block' : 'none';
+			});
+		}
+
+		function prevItem(btn) {
+			currentItemIndex = (currentItemIndex - 1 + portfolioItems.length) % portfolioItems.length;
+			showItem(currentItemIndex);
+		}
+
+		function nextItem(btn) {
+			currentItemIndex = (currentItemIndex + 1) % portfolioItems.length;
+			showItem(currentItemIndex);
+		}
+
+   
+		showItem(currentItemIndex);
+    function setLanguage(lang) {
+        var langElements = document.querySelectorAll('[data-lang]');
+        langElements.forEach(function(element) {
+            var key = element.getAttribute('data-lang');
+            switch (lang) {
+                case 'en':
+                    element.textContent = en[key];
+                    break;
+                case 'de':
+                    element.textContent = de[key];
+                    break;
+				case 'jp':
+					element.textContent = jp[key];
+					break;
+				case 'sp':
+					element.textContent = sp[key];
+					break;
+            }
+        });
+    }
+
+    var en = {
+        about: 'About Me',
+        aboutText: 'I am a Designer and Programmer, being experienced in HTML, CSS, Python and C#.',
+		miniabout: 'About',
+		minicontact: 'Contact',
+		miniportfolio: 'Portfolio',
+		contact: 'Contact',
+		English: 'English',
+		German: 'German',
+		Japanese: 'Japanese',
+		Spanish: 'Spanish',
+		portfolio:'Portfolio',
+		project1Title: 'Valorant Weapon Buy Generator',
+		project1Description: 'A tool to generate random weapon buy suggestions for Valorant.',
+		project2Title: 'SW-IMGPX.',
+		project2Description: 'A tool to generate Island Pixel art for the Game Summoners war',
+		CC: '© 2024 Tim Rechenberger. All rights reserved.',
+		VOG: 'View on Github',
+		name: 'Name:',
+		email: 'E-Mail:',
+		message: 'Message:',
+		send: 'Send',
+		project3Title: 'Val-TG',
+		project3Description: 'A Funny Ascii Art Valorant Text Generator to annoy your friends or random mates and enemys with',
+    };
+
+    var de = {
+        about: 'Über mich',
+        aboutText: 'Ich bin ein Gestalter und Programmierer, und habe Erfahrung mit HTML, CSS, Python und C#.',
+		miniabout: 'Über mich',
+		minicontact: 'Kontakt',
+		miniportfolio: 'Portfolio',
+		contact: 'Kontakt',
+		English: 'Englisch',
+		German: 'Deutsch',
+		Japanese: 'Japanisch',
+		Spanish: 'Spanisch',
+		portfolio:'Portfolio',
+		project1Title: 'Valorant Waffen Kauf Generator',
+		project1Description: 'Ein Programm zum Generieren von zufälligen Waffenvorschlägen für Valorant.',
+		project2Title: 'SW-IMGPX.',
+		project2Description: 'Ein Programm zum Generieren von Pixel Art für das Spiel Summoners war',
+		CC: '© 2024 Tim Rechenberger. Alle Rechte vorbehalten.',
+		VOG: 'Siehe auf Github',
+		name: 'Name:',
+		email: 'E-Mail:',
+		message: 'Nachricht:',
+		send: 'Senden',
+		project3Title: 'Val-TG',
+		project3Description: 'Ein lustiger Ascii Art Valorant Text Generator, um deine Freunde oder zufällige Mitspieler und Feinde zu nerven.',
+    };
+	
+	    var jp = {
+        about: '私のこと',
+        aboutText: '私はデザイナーであり、HTML、CSS、Python、そしてC#の経験があります。',
+		miniabout: '私のこと',
+		minicontact: '連絡情報',
+		miniportfolio: 'ポートフォリオ',
+		contact: '連絡情報',
+		English: '英語',
+		German: 'ドイツ語',
+		Japanese: '日本語',
+		Spanish: 'スペイン語',
+		portfolio:'ポートフォリオ',
+		project1Title: 'Valorant 武器購入ジェネレーター',
+		project1Description: 'Valorant のランダム武器購入提案を生成するツール',
+		project2Title: 'SW-IMGPX.',
+		project2Description: 'ゲーム「サマナーズウォー」の島のピクセルアートを生成するツール',
+		CC: '© 2024 Tim Rechenberger. 全著作権所有者に帰属します',
+		VOG: 'Github で表示',
+		name: '名前:',
+		email: 'メールアドレス:',
+		message: 'メッセージ :',
+		send: '送信',
+		project3Title: 'Val-TG',
+		project3Description: '友達やランダムな仲間や敵をイラつかせる楽しいAscii Art Valorantテキストジェネレーター',
+	};
+		var sp = {
+        about: 'Sobre mi',
+        aboutText: 'Soy un diseñador y programador,tengo experiencia en HTML, CSS, Python y C#.',
+		miniabout: 'Sobre',
+		minicontact: 'Contacto',
+		miniportfolio: 'Portfolio',
+		contact: 'Contacto',
+		English: 'Ingles',
+		German: 'Aleman ',
+		Japanese: 'Japones',
+		Spanish: 'Español',
+		portfolio:'Portfolio',
+		project1Title: 'Generador de compra de armas en el valorant',
+		project1Description: 'Una herramienta para generar sugerencias aleatorias de compra de armas para valorant.',
+		project2Title: 'SW-IMGPX.',
+		project2Description: 'Una herramienta para general island pixel art para Summoners war',
+		CC: '© 2024 Tim Rechenberger. Todos los derechos estan reservados .',
+		VOG: 'Ver en Github',
+		name: 'nombre:',
+		email: 'Correo electronico:',
+		message: 'Mensaje :',
+		send: 'Enviar',
+		project3Title: 'Val-TG',
+		project3Description: 'Un divertido generador de texto en ASCII Art de Valorant para molestar a tus amigos o compañeros aleatorios y enemigos.',
+    };
+
+    setLanguage('en');
+	</script>
+</body>
+</html>
